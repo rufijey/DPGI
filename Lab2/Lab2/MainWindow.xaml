@@ -8,12 +8,13 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Grid.ColumnSpan="2">
+        <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Grid.ColumnSpan="4">
             <StackPanel Orientation="Horizontal" >
 
                 <Button ToolTip="Відкрити">
@@ -32,7 +33,25 @@
                     <Image Source="images/paste.png" Height="47" Width="47"/>
                 </Button>
             </StackPanel>
+
         </Border>
+
+        <Border Grid.Row="1" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10" Grid.ColumnSpan="4">
+            <Grid  Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBox Grid.Row="0" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
+
+                <DockPanel Grid.Row="1" LastChildFill="False">
+                    <Button Content="OK" DockPanel.Dock="Bottom" Width="34" Height="30" Margin="5"/>
+                </DockPanel>
+            </Grid>
+        </Border>
+
+
     </Grid>
 
 
