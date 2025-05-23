@@ -8,7 +8,6 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Window.Resources>
-
         <LinearGradientBrush x:Key="LinearPanelBrush" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="Yellow" Offset="0.0"/>
             <GradientStop Color="Cyan" Offset="0.5"/>
@@ -28,56 +27,45 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-
         <Border Grid.Row="0" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10"
-				Background="{StaticResource LinearPanelBrush}">
-            <StackPanel Orientation="Horizontal" >
-
-                <Button ToolTip="Відкрити" Style="{StaticResource ButtonStyle}">
+                Background="{StaticResource LinearPanelBrush}">
+            <StackPanel Orientation="Horizontal">
+                <Button ToolTip="Відкрити" Style="{StaticResource ButtonStyle}" Click="OpenFile_Click">
                     <Image Source="images/folder.png" Height="47" Width="47"/>
                 </Button>
-
-                <Button ToolTip="Стерти" Style="{StaticResource ButtonStyle}">
+                <Button ToolTip="Стерти" Style="{StaticResource ButtonStyle}" Click="ClearText_Click">
                     <Image Source="images/broom.png" Height="47" Width="47"/>
                 </Button>
-
-                <Button ToolTip="Копіювати" Style="{StaticResource ButtonStyle}">
+                <Button ToolTip="Копіювати" Style="{StaticResource ButtonStyle}" Click="CopyText_Click">
                     <Image Source="images/copy-two-paper-sheets-interface-symbol.png" Height="47" Width="47"/>
                 </Button>
-
-                <Button ToolTip="Вставити" Style="{StaticResource ButtonStyle}">
+                <Button ToolTip="Вставити" Style="{StaticResource ButtonStyle}" Click="PasteText_Click">
                     <Image Source="images/paste.png" Height="47" Width="47"/>
                 </Button>
             </StackPanel>
         </Border>
+
         <Border Grid.Row="1" BorderBrush="#FFCBBEBE" BorderThickness="2" CornerRadius="10"
-				Background="{StaticResource LinearPanelBrush}">
-            <Grid  Margin="10">
+                Background="{StaticResource LinearPanelBrush}">
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBox Grid.Row="0" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
+                <TextBox x:Name="mainTextBox"
+                         Grid.Row="0"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Visible"
+                         FontSize="20" TextChanged="mainTextBox_TextChanged"/>
 
-                
-                
-                <DockPanel Grid.Row="1" LastChildFill="False">
-                    <Label Content="Розмір шрифту:" VerticalAlignment="Center" Margin="4" DockPanel.Dock="Left"/>
-
-                    <Slider x:Name="fontSlider" Margin="4" MinWidth="100" Maximum="100" Minimum="12" Value="20"/>
-
-                    <Button Content="OK" DockPanel.Dock="Bottom" Width="34" Height="30" Margin="5" RenderTransformOrigin="-2.705,0.6"/>
+                <DockPanel Grid.Row="1" LastChildFill="False" Margin="5">
+                    <Label Content="Розмір шрифту:" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                    <Slider x:Name="fontSlider" Minimum="12" Maximum="100" Value="20" Width="150"
+                            ValueChanged="FontSlider_ValueChanged" DockPanel.Dock="Left"/>
+                    <Button Content="OK" Width="50" Height="30" Click="OkButton_Click" DockPanel.Dock="Right"/>
                 </DockPanel>
-                
-                
             </Grid>
-            
         </Border>
-
-        
-
     </Grid>
-
-
 </Window>
