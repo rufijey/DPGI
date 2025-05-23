@@ -20,5 +20,10 @@ namespace Lab2
         {
             InitializeComponent();
         }
+
+        private void fontSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }

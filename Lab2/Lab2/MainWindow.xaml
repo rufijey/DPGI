@@ -60,11 +60,22 @@
 
                 <TextBox Grid.Row="0" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" />
 
+                
+                
                 <DockPanel Grid.Row="1" LastChildFill="False">
-                    <Button Content="OK" DockPanel.Dock="Bottom" Width="34" Height="30" Margin="5"/>
+                    <Label Content="Розмір шрифту:" VerticalAlignment="Center" Margin="4" DockPanel.Dock="Left"/>
+
+                    <Slider x:Name="fontSlider" Margin="4" MinWidth="100" Maximum="100" Minimum="12" Value="20"/>
+
+                    <Button Content="OK" DockPanel.Dock="Bottom" Width="34" Height="30" Margin="5" RenderTransformOrigin="-2.705,0.6"/>
                 </DockPanel>
+                
+                
             </Grid>
+            
         </Border>
+
+        
 
     </Grid>
 
