@@ -17,11 +17,22 @@ namespace CurrencyConverter
             if (decimal.TryParse(AmountTextBox.Text, out decimal amount))
             {
                 string currency = (CurrencyComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
-
                 decimal rate = GetExchangeRate(currency);
-                decimal converted = amount * rate;
 
-                ResultTextBlock.Text = $"{amount} грн = {converted:F2} {currency}";
+                if (DirectionToUAH.IsChecked == true)
+                {
+                    decimal converted = amount * rate;
+                    ResultTextBlock.Text = $"{amount} {currency} = {converted:F2} грн";
+                }
+                else if (DirectionFromUAH.IsChecked == true)
+                {
+                    decimal converted = amount / rate;
+                    ResultTextBlock.Text = $"{amount} грн = {converted:F2} {currency}";
+                }
+                else
+                {
+                    MessageBox.Show("Оберіть напрямок конвертації.", "Увага", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             else
             {
@@ -33,9 +44,9 @@ namespace CurrencyConverter
         {
             return currency switch
             {
-                "USD" => 0.027m,
-                "EUR" => 0.025m,
-                "PLN" => 0.11m,
+                "USD" => 37.0m,
+                "EUR" => 40.0m,
+                "PLN" => 9.0m,
                 _ => 1m
             };
         }
@@ -43,6 +54,11 @@ namespace CurrencyConverter
         private void CurrencyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ConvertButton.IsEnabled = CurrencyComboBox.SelectedItem != null;
+        }
+
+        private void DirectionToUAH_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
